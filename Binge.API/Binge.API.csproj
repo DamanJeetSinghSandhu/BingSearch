@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Bing.Db\Bing.Db.csproj" />
     <ProjectReference Include="..\Bing.Models\Bing.Models.csproj" />
+    <ProjectReference Include="..\Bing.Service\Bing.Service.csproj" />
   </ItemGroup>
 
 </Project>

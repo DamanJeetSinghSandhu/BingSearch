@@ -1,5 +1,6 @@
 using Bing.Models;
 using Microsoft.AspNetCore.Mvc;
+using Bing.Service;
 
 namespace Binge.API.Controllers
 {
@@ -9,10 +10,12 @@ namespace Binge.API.Controllers
     {
 
         private readonly IRepository _repo;
+        private readonly ICSVStreamer _csvStreamer;
 
-        public LocationController(IRepository repo)
+        public LocationController(IRepository repo, ICSVStreamer csvStreamer)
         {
             _repo = repo;
+            _csvStreamer = csvStreamer;
         }
 
        
@@ -39,6 +42,21 @@ namespace Binge.API.Controllers
 
             return Ok();
         }
+
+
+        [HttpGet("file")]
+        public IActionResult GetCsvFromFile()
+        {
+            var csvData = _csvStreamer.GetCsvFromFile();
+            return Ok(csvData);
+        }
+
+        //[HttpGet("database")]
+        //public IActionResult GetCsvFromDatabase()
+        //{
+        //    var csvData = _csvStreamer.GetCsvFromDatabase();
+        //    return Ok(csvData);
+        //}
 
     }
 }

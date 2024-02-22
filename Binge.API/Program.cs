@@ -1,6 +1,7 @@
 using Bing.Db;
 using Bing.Db.Repository;
 using Bing.Models;
+using Bing.Service;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -19,7 +20,8 @@ IConfiguration configuration = new ConfigurationBuilder()
 string connectionString = configuration.GetConnectionString("ConnectionString");
 builder.Services.AddDbContext<BingDbContext>(options =>
                options.UseSqlServer(connectionString))
-            .AddScoped<IRepository, Repository>();
+            .AddScoped<IRepository, Repository>()
+            .AddScoped<ICSVStreamer, CSVStreamer>();
 
 
 builder.Services.AddCors(options =>

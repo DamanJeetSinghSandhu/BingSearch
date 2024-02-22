@@ -28,7 +28,7 @@ namespace Bing.Db.Repository
         }
 
 
-        private void SaveChanges()
+        public void SaveChanges()
         {
            _context.SaveChanges();
         }
